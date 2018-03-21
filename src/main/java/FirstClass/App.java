@@ -34,7 +34,7 @@ class Processor
 
 class Printer
 {
-	public void printSum (int[] output)
+	public static void printSum (int[] output)
 	{
 		System.out.println(output[0] + output[1]+"i");
 	}
@@ -47,9 +47,9 @@ public class App
     {
     		Reader r = new Reader();
     		Processor p = new Processor();
-    		Printer pr = new Printer();
+    		Printer pr;
     		int[] inputNums = r.takeInput();
     		int[] outputNums = p.add(inputNums);
-    		pr.printSum(outputNums);
+    		Printer.printSum(outputNums);
     }
 }
