@@ -1,5 +1,6 @@
-#
+# Project specific
 .bach_profile.save
+archetypes.txt
 #
 
 tomcat
@@ -54,3 +55,4 @@ nb-configuration.xml
 release.properties
 pom.xml.releaseBackup
 pom.xml.tag
+
