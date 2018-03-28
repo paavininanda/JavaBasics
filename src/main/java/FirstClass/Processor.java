@@ -1,7 +1,7 @@
 package FirstClass;
 
-public class Processor {
-	private Integer[] output = new Integer[2];
+public class Processor implements processInterface{
+	
 	public Integer[] add (Integer[] input) 
 	{
 		for (Integer i=0;i<2;i++) 

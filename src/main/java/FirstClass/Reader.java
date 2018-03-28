@@ -2,9 +2,8 @@ package FirstClass;
 
 import java.util.Scanner;
 
-public class Reader
+public class Reader implements consoleReadInterface
 {
-	private Integer[] inp = new Integer[4];
 	public Integer[] takeInput()
 	{
 		Scanner in = new Scanner(System.in);
