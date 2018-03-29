@@ -2,7 +2,7 @@ package FirstClass;
 
 import java.util.Scanner;
 
-public class Reader implements consoleReadInterface
+public class consoleReader implements ReadInterface
 {
 	public Integer[] takeInput()
 	{

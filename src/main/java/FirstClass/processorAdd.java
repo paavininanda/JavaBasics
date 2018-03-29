@@ -1,8 +1,8 @@
 package FirstClass;
 
-public class Processor implements processInterface{
+public class processorAdd implements processInterface{
 	
-	public Integer[] add (Integer[] input) 
+	public Integer[] arithmatic (Integer[] input) 
 	{
 		for (Integer i=0;i<2;i++) 
 		{
