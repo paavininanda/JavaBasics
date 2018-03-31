@@ -56,4 +56,12 @@ public class AppTest
 		assertEquals(outputNums[1].intValue(),4);
 	}
 	
+	@Test
+	public void mulAddOfTwoNumbersTesting() {
+		processorMulAdd mulAdd = new processorMulAdd();
+		outputNums = mulAdd.arithmatic(inputNums);
+		assertEquals(outputNums[0].intValue(),-2);
+		assertEquals(outputNums[1].intValue(),6);
+	}
+	
 }

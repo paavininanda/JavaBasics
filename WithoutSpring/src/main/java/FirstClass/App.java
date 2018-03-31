@@ -14,6 +14,7 @@ public class App
     		processorSubtract sub = new processorSubtract();
     		Printer pr = new Printer();
     		processorMultiply mul = new processorMultiply();
+    		processorMulAdd mulAdd = new processorMulAdd(); 
     		
     		Integer[] inputNums;
     		Integer[] outputNums;
@@ -35,6 +36,9 @@ public class App
         		pr.printSum(outputNums);
         		outputNums = mul.arithmatic(inputNums);
         		System.out.println("Multiplication is : ");
+        		pr.printSum(outputNums);
+        		outputNums = mulAdd.arithmatic(inputNums);
+        		System.out.println("Multiplication and adding is : ");
         		pr.printSum(outputNums);
     		}
     }
