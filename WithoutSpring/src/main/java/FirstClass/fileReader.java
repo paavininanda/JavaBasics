@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class fileReader implements ReadInterface {
 	public Integer[] takeInput() throws FileNotFoundException
 	{
-		Scanner in = new Scanner(new File("/Users/paavini/Desktop/Maven/src/main/java/FirstClass/ints.txt"));
+		Scanner in = new Scanner(new File("/Users/paavini/Desktop/Maven/WithoutSpring/src/main/java/FirstClass/ints.txt"));
 		Integer i = 0;
 		while (in.hasNext()){
 			inp[i] = in.nextInt();
