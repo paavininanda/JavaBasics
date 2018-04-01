@@ -1,5 +1,8 @@
 package FirstClass;
 
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
 public class processorAdd implements processInterface{
 	
 	public Integer[] arithmatic (Integer[] input) 

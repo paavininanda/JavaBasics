@@ -2,6 +2,8 @@ package FirstClass;
 
 import java.io.FileNotFoundException;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 public class App 
 {
     public static void main( String[] args ) throws FileNotFoundException
@@ -10,11 +12,14 @@ public class App
 //    	Declarations
     		fileReader file = new fileReader();
     		consoleReader con = new consoleReader();
-    		processorAdd add = new processorAdd();
-    		processorSubtract sub = new processorSubtract();
+    		
+    		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+    		processorAdd add = context.getBean("processorAdd",processorAdd.class);
+    		processorSubtract sub = context.getBean("processorSub" , processorSubtract.class);
+    		processorMultiply mul = context.getBean("processorMultiply" , processorMultiply.class);
+    		processorMulAdd mulAdd = context.getBean("processorMulAdd" , processorMulAdd.class);
+    		
     		Printer pr = new Printer();
-    		processorMultiply mul = new processorMultiply();
-    		processorMulAdd mulAdd = new processorMulAdd(); 
     		
     		Integer[] inputNums;
     		Integer[] outputNums;
@@ -44,5 +49,7 @@ public class App
         		System.out.println("Multiplication and adding is : ");
         		pr.printSum(outputNums);
     		}
+    		
+    		context.close();
     }
 }
