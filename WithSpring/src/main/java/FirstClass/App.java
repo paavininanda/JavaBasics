@@ -10,17 +10,16 @@ public class App
     {
     	
 //    	Declarations
-    		fileReader file = new fileReader();
-    		consoleReader con = new consoleReader();
-    		
+   		
     		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-    		processorAdd add = context.getBean("processorAdd",processorAdd.class);
-    		processorSubtract sub = context.getBean("processorSub" , processorSubtract.class);
-    		processorMultiply mul = context.getBean("processorMultiply" , processorMultiply.class);
-    		processorMulAdd mulAdd = context.getBean("processorMulAdd" , processorMulAdd.class);
-    		
-    		Printer pr = new Printer();
-    		
+    		ProcessInterface add = context.getBean(ProcessorAdd.class);
+    		ProcessInterface sub = context.getBean(ProcessorSubtract.class);
+    		ProcessInterface mul = context.getBean(ProcessorMultiply.class);
+    		ProcessInterface mulAdd = context.getBean(ProcessorMulAdd.class);
+    		ReadInterface file = context.getBean(FileReader.class);
+    		ReadInterface con = context.getBean(ConsoleReader.class);
+    		PrintInterface pr = context.getBean(Printer.class);
+    	
     		Integer[] inputNums;
     		Integer[] outputNums;
     		for(Integer i = 0; i< 2 ; i++) {

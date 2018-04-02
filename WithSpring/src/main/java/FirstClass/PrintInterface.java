@@ -1,5 +1,5 @@
 package FirstClass;
 
-public interface printInterface {
+public interface PrintInterface {
 	public void printSum (Integer[] output);
 }

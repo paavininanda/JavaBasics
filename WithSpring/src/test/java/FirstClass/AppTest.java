@@ -29,8 +29,7 @@ public class AppTest
 	
 	@Test
 	public void additionOfTwoNumbersTesting() {
-		
-		processorAdd add = context.getBean("processorAdd",processorAdd.class);
+		ProcessInterface add = context.getBean(ProcessorAdd.class);
 		outputNums = add.arithmatic(inputNums);
 		assertEquals(outputNums[0].intValue(),2);
 		assertEquals(outputNums[1].intValue(),4);
@@ -40,13 +39,17 @@ public class AppTest
 	public void invalidInputTest() {
 		ByteArrayInputStream in = new ByteArrayInputStream("My string".getBytes());
 		System.setIn(in);
-		consoleReader r = new consoleReader();
-		r.takeInput();
+		ReadInterface r = context.getBean(ConsoleReader.class);
+		try {
+			r.takeInput();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
 	public void subtractionOfTwoNumbersTesting() {
-		processorSubtract sub = context.getBean("processorSub" , processorSubtract.class);
+		ProcessInterface sub = context.getBean(ProcessorSubtract.class);
 		outputNums = sub.arithmatic(inputNums);
 		assertEquals(outputNums[0].intValue(),0);
 		assertEquals(outputNums[1].intValue(),0);
@@ -54,7 +57,7 @@ public class AppTest
 	
 	@Test
 	public void multiplicationOfTwoNumbersTesting() {
-		processorMultiply mul = context.getBean("processorMultiply" , processorMultiply.class);
+		ProcessInterface mul = context.getBean(ProcessorMultiply.class);
 		outputNums = mul.arithmatic(inputNums);
 		assertEquals(outputNums[0].intValue(),-3);
 		assertEquals(outputNums[1].intValue(),4);
@@ -62,7 +65,7 @@ public class AppTest
 	
 	@Test
 	public void mulAddOfTwoNumbersTesting() {
-		processorMulAdd mulAdd = context.getBean("processorMulAdd" , processorMulAdd.class);
+		ProcessInterface mulAdd = context.getBean(ProcessorMulAdd.class);
 		outputNums = mulAdd.arithmatic(inputNums);
 		assertEquals(outputNums[0].intValue(),-2);
 		assertEquals(outputNums[1].intValue(),6);

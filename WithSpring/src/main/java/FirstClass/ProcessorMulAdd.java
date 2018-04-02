@@ -1,12 +1,11 @@
 package FirstClass;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.inject.Inject;
 import org.springframework.stereotype.Component;
 
 @Component
-public class processorMulAdd implements processInterface {
-	private processInterface pAdd,pMul;
-	
+public class ProcessorMulAdd implements ProcessInterface {
+	private ProcessInterface pAdd,pMul;
 	
 	public Integer[] arithmatic (Integer[] input) {
 		//	Multiplying and two and then adding the multiplaction to first, just for the sake of having multiple dependencies
@@ -16,8 +15,8 @@ public class processorMulAdd implements processInterface {
 		return pAdd.arithmatic(input);
 	}
 	
-	@Autowired
-	public void setMulAddInterface(processorAdd interfaceAdd, processorMultiply interfaceMull) {
+	@Inject
+	public void setMulAddInterface(ProcessorAdd interfaceAdd, ProcessorMultiply interfaceMull) {
 		this.pAdd=interfaceAdd;
 		this.pMul=interfaceMull;
 	}

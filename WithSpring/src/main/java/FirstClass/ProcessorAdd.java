@@ -1,9 +1,9 @@
 package FirstClass;
 
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
-@Configuration
-public class processorAdd implements processInterface{
+@Component
+public class ProcessorAdd implements ProcessInterface {
 	
 	public Integer[] arithmatic (Integer[] input) 
 	{

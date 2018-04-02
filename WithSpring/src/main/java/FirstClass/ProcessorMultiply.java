@@ -1,11 +1,11 @@
 package FirstClass;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.inject.Inject;
 import org.springframework.stereotype.Component;
 
 @Component
-public class processorMultiply implements processInterface{
-	private processorAdd pAdd;
+public class ProcessorMultiply implements ProcessInterface{
+	private ProcessInterface pAdd;
 	
 	public Integer[] arithmatic (Integer[] input) {
 		//	The two complex numbers are input[0] + input[1] i and input[2] + input[3] i;
@@ -17,8 +17,8 @@ public class processorMultiply implements processInterface{
 		return pAdd.arithmatic(newInput);
 	}
 	
-	@Autowired
-	public void setAddInterface(processorAdd pInterface) {
+	@Inject
+	public void setAddInterface(ProcessorAdd pInterface) {
 		this.pAdd = pInterface;
 	}
 }

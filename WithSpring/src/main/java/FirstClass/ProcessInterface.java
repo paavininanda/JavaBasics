@@ -1,6 +1,6 @@
 package FirstClass;
 
-public interface processInterface {
+public interface ProcessInterface {
 	Integer[] output = new Integer[2];
 	public Integer[] arithmatic (Integer[] input);
 }

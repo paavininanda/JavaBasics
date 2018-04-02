@@ -2,7 +2,10 @@ package FirstClass;
 
 import java.util.Scanner;
 
-public class consoleReader implements ReadInterface
+import org.springframework.stereotype.Component;
+
+@Component
+public class ConsoleReader implements ReadInterface
 {
 	public Integer[] takeInput()
 	{
