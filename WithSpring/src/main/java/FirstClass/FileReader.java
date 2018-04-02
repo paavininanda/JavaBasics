@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class FileReader implements ReadInterface {
+	
+	@Override
 	public Integer[] takeInput() throws FileNotFoundException
 	{
 		Scanner in = new Scanner(new File("/Users/paavini/Desktop/Maven/WithSpring/src/main/java/FirstClass/ints.txt"));

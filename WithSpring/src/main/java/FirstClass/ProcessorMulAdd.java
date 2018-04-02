@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class ProcessorMulAdd implements ProcessInterface {
 	private ProcessInterface pAdd,pMul;
 	
+	@Override
 	public Integer[] arithmatic (Integer[] input) {
 		//	Multiplying and two and then adding the multiplaction to first, just for the sake of having multiple dependencies
 		Integer[] temp = pMul.arithmatic(input);

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class App 
 {
-    public static void main( String[] args ) throws FileNotFoundException
+    public static <String> void main( String[] args ) throws FileNotFoundException
     {
     	
 //    	Declarations

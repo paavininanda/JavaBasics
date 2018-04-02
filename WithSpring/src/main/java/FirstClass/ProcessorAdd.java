@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProcessorAdd implements ProcessInterface {
 	
+	@Override
 	public Integer[] arithmatic (Integer[] input) 
 	{
 		for (Integer i=0;i<2;i++) 
