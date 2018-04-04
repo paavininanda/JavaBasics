@@ -72,4 +72,14 @@ public class AppTest
 		assertEquals(outputNums.get(1).intValue(),6);
 	}
 	
+//	@Test
+//	public void positiveNumsPlusOneTesting() {
+//		processor = context.getBean(PositiveNumsPlusOne.class);
+//		outputNums = processor.arithmatic(inputNums);
+//		assertEquals(outputNums.get(0).intValue(),2);
+//		assertEquals(outputNums.get(1).intValue(),3);
+//		assertEquals(outputNums.get(2).intValue(),2);
+//		assertEquals(outputNums.get(3).intValue(),3);
+//	}
+	
 }

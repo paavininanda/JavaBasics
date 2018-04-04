@@ -50,7 +50,7 @@ public class App
     				processor = context.getBean(MulAdder.class);
     				break;
     			case 5:
-    				processor = context.getBean(PositiveNums.class);
+    				processor = context.getBean(PositiveNumsPlusOne.class);
     				break;
     			default:
     				System.out.println("Invalid selection");
