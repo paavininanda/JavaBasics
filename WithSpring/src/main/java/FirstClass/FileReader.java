@@ -3,11 +3,11 @@ package FirstClass;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
 import org.springframework.stereotype.Component;
 
 @Component
-public class FileReader implements ReadInterface {
+
+public class FileReader implements Reader {
 	
 	@Override
 	public Integer[] takeInput() throws FileNotFoundException
