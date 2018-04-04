@@ -5,7 +5,7 @@ import java.util.Scanner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ConsoleReader implements ReadInterface
+public class ConsoleReader implements Reader
 {
 	@Override
 	public Integer[] takeInput()
