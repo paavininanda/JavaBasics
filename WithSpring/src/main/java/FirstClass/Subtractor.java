@@ -12,7 +12,7 @@ public class Subtractor implements Processor<Vector<Integer>>{
 	{
 		for (Integer i=0;i<2;i++) 
 		{
-			output.add(input[i] - input[i+2]);
+			output.add(i, input[i] - input[i+2]);
 		}
 		return output;
 	}
