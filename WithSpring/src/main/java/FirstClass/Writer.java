@@ -1,7 +1,7 @@
 package FirstClass;
 
 @FunctionalInterface
-public interface Writer<B> {
-	public void print (B output);
+public interface Writer<T> {
+	public void print (T output);
 };
 

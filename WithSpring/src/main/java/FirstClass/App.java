@@ -11,15 +11,16 @@ public class App
 	public static void main( String[] args ) throws FileNotFoundException
     {
     		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-    		Reader reader = context.getBean(ConsoleReader.class);
-		Processor<Vector<Integer>> processor = context.getBean(AdderP.class);
+    		Reader reader;
+    		//ApplicationContext cxt = new ClassPathXmlApplicationContext("spring-config.xml");
+		Processor<Vector<Integer>> processor;
     		Integer selector;
     		Writer<Vector<Integer>> writer;
     		Integer[] inputNums;
     		Vector<Integer> outputNums;
     		Scanner in = new Scanner(System.in);
     		
-    		System.out.println("Select the appropriate option - \n1) Console Reader \n2) File Read \n ");
+    		System.out.println("Select the appropriate option - \n1) Console Reader \n2) File Read \n3) Database Read ");
     		selector = in.nextInt();
     		
     		switch (selector) {
@@ -29,8 +30,12 @@ public class App
 			case 2:
 				reader = context.getBean(FileReader.class);
 				break;
+			case 3:
+				reader = context.getBean(DatabaseReader.class);
+				break;
 			default:
 				System.out.println("Invalid selection");
+				reader = context.getBean(ConsoleReader.class);
 		}
     		
     		System.out.println("Select the appropriate option - \n1) Addition \n2) Subtraction \n3) Multiplication \n4) Multiplicatoin+Addition \n5)Positive parts of the complex numbers");
@@ -54,12 +59,13 @@ public class App
     				break;
     			default:
     				System.out.println("Invalid selection");
+    				processor = context.getBean(AdderP.class);
     		}
     		
     		writer = context.getBean(ConsolePrinter.class);
     		
     		//Writer using lambda expression Intantiating and the implementation together
-    		Writer<Vector<Integer>> printerPositiveNums = (Vector<Integer> output) -> output.forEach(System.out::println);
+    		Writer<Vector<Integer>> printerPositiveNums = output -> output.forEach(System.out::println);
     		
     		inputNums = reader.takeInput();
     		outputNums = (Vector<Integer>) processor.arithmatic(inputNums);
@@ -70,6 +76,7 @@ public class App
     		}
     			
     		context.close();
+    		in.close();
     		
     }
 }

@@ -18,6 +18,7 @@ public class FileReader implements Reader {
 			inp[i] = in.nextInt();
 			i++;
 		}
+		in.close();
 		return inp;
 	}
 }

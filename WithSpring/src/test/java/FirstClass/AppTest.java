@@ -8,6 +8,8 @@ import static org.junit.Assert.*;
 import java.io.*;
 import java.util.*;
 
+import javax.inject.Inject;
+
 /**
  * Unit test for simple App.
  */
@@ -17,6 +19,8 @@ public class AppTest
 	private Integer[] inputNums = new Integer[4];
 	private Vector<Integer> outputNums;
 	private Processor<Vector<Integer>> processor;
+	@Inject
+	private Mapper mapper;
 	
 	AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 	
@@ -80,6 +84,18 @@ public class AppTest
 		assertEquals(outputNums.get(1).intValue(),3);
 		assertEquals(outputNums.get(2).intValue(),2);
 		assertEquals(outputNums.get(3).intValue(),3);
+	}
+	
+	@Test
+	public void databaseReaderTesting() {
+		Integer[] i = new Integer[4];
+		i[0]=2;
+		i[1]=2;
+		i[2]=2;
+		i[3]=2;
+		mapper.insertToInput(i);
+		assertEquals(i[0].intValue(),2);
+		assertEquals(i[0].intValue(),3);
 	}
 	
 }

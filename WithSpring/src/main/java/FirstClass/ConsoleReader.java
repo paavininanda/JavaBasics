@@ -17,6 +17,7 @@ public class ConsoleReader implements Reader
 				System.out.println("Enter number " + (i/2+1));
 			inp[i] = in.nextInt();
 		}
+		in.close();
 		return inp;
 	}
 }
