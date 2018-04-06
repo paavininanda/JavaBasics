@@ -1,6 +1,5 @@
 package FirstClass;
 
-
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -14,6 +13,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 @ComponentScan("FirstClass")
 @MapperScan("FirstClass")
 public class AppConfig {
+	
 	@Bean
     public BasicDataSource getDataSource() {
        BasicDataSource dataSource = new BasicDataSource();
@@ -28,6 +28,7 @@ public class AppConfig {
 	public SqlSessionFactory sqlSessionFactory() throws Exception {
       SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
       sessionFactory.setDataSource((javax.sql.DataSource) getDataSource());
+      sessionFactory.getObject().getConfiguration().addMapper(Mapper.class);
       return sessionFactory.getObject();
 	}
 	

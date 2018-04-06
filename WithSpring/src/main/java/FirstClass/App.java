@@ -19,9 +19,12 @@ public class App
     		Integer[] inputNums;
     		Vector<Integer> outputNums;
     		Scanner in = new Scanner(System.in);
+    		Boolean dbWriteInput = false;
+    		DatabaseWriterForInput databaseWriter = context.getBean(DatabaseWriterForInput.class);
     		
-    		System.out.println("Select the appropriate option - \n1) Console Reader \n2) File Read \n3) Database Read ");
+    		System.out.println("Select the appropriate option - \n1) Console Reader \n2) File Read \n3) Database Read\n4) Console read and DatabaseWrite Input");
     		selector = in.nextInt();
+    		
     		
     		switch (selector) {
 			case 1:
@@ -32,6 +35,10 @@ public class App
 				break;
 			case 3:
 				reader = context.getBean(DatabaseReader.class);
+				break;
+			case 4:
+				reader = context.getBean(ConsoleReader.class);
+				dbWriteInput = true;
 				break;
 			default:
 				System.out.println("Invalid selection");
@@ -74,9 +81,14 @@ public class App
     		else {
     			printerPositiveNums.print(outputNums);
     		}
-    			
-    		context.close();
+    		
+    		if(dbWriteInput) {
+    			databaseWriter.insert(inputNums);
+    		}
+    		
     		in.close();
+    		context.close();
+    		
     		
     }
 }

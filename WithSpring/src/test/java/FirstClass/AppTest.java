@@ -19,8 +19,6 @@ public class AppTest
 	private Integer[] inputNums = new Integer[4];
 	private Vector<Integer> outputNums;
 	private Processor<Vector<Integer>> processor;
-	@Inject
-	private Mapper mapper;
 	
 	AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 	
@@ -87,15 +85,19 @@ public class AppTest
 	}
 	
 	@Test
-	public void databaseReaderTesting() {
-		Integer[] i = new Integer[4];
-		i[0]=2;
-		i[1]=2;
-		i[2]=2;
-		i[3]=2;
-		mapper.insertToInput(i);
-		assertEquals(i[0].intValue(),2);
-		assertEquals(i[0].intValue(),3);
+	public void databaseWriterTesting() {
+		DatabaseWriterForInput dbWriter = context.getBean(DatabaseWriterForInput.class);
+		dbWriter.insert(inputNums);
+	}
+	
+	@Test
+	public void databaseReaderTesting() throws FileNotFoundException {
+		Reader reader = context.getBean(DatabaseReader.class);
+		Integer[] inputNums = reader.takeInput();
+		assertEquals(inputNums[0].intValue(),1);
+		assertEquals(inputNums[1].intValue(),2);
+		assertEquals(inputNums[2].intValue(),3);
+		assertEquals(inputNums[3].intValue(),4);
 	}
 	
 }

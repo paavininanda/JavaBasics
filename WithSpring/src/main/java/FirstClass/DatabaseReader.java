@@ -8,17 +8,22 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatabaseReader implements Reader{
 	
-	@Inject
 	private Mapper mapper;
 	
 	@Override
 	public Integer[] takeInput() throws FileNotFoundException {
-		return mapper.getNums(0);
+		ComplexNumber c = mapper.getNums(1);
+		Integer [] input = new Integer[4];
+		input[0] = c.getReal1();
+		input[1] = c.getImg1();
+		input[2] = c.getReal2();
+		input[3] = c.getImg2();
+		return input;
 	}
 	
-//	@Inject
-//	public void setMapper(Mapper mapper) {
-//		this.mapper = mapper;
-//	}
+	@Inject
+	public void setMapper(Mapper mapper) {
+		this.mapper = mapper;
+	}
 
 }
