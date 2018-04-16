@@ -22,7 +22,7 @@ public class Multiplier {
 	}
 	
 	@Inject
-	public void setAdder(Adder pAdd) {
+	public Multiplier(Adder pAdd) {
 		this.pAdd = pAdd;
 	}
 	

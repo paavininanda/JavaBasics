@@ -8,8 +8,6 @@ import static org.junit.Assert.*;
 import java.io.*;
 import java.util.*;
 
-import javax.inject.Inject;
-
 /**
  * Unit test for simple App.
  */

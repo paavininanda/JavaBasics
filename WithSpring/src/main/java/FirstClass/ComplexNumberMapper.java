@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface Mapper {
+public interface ComplexNumberMapper {
 	@Select("Select * from input where SNo=#{index}")
 	public ComplexNumber getNums(Integer index);
 	

@@ -28,7 +28,7 @@ public class AppConfig {
 	public SqlSessionFactory sqlSessionFactory() throws Exception {
       SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
       sessionFactory.setDataSource((javax.sql.DataSource) getDataSource());
-      sessionFactory.getObject().getConfiguration().addMapper(Mapper.class);
+      sessionFactory.getObject().getConfiguration().addMapper(ComplexNumberMapper.class);
       return sessionFactory.getObject();
 	}
 	

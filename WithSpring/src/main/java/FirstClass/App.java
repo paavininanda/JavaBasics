@@ -1,6 +1,7 @@
 package FirstClass;
 
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -12,17 +13,17 @@ public class App
     {
     		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
     		Reader reader;
-    		//ApplicationContext cxt = new ClassPathXmlApplicationContext("spring-config.xml");
+//    		ApplicationContext cxt = new ClassPathXmlApplicationContext("spring-config.xml");
 		Processor<Vector<Integer>> processor;
     		Integer selector;
     		Writer<Vector<Integer>> writer;
     		Integer[] inputNums;
-    		Vector<Integer> outputNums;
+    		Vector<Integer> outputNums = null;
     		Scanner in = new Scanner(System.in);
-    		Boolean dbWriteInput = false;
+    		Boolean dbWriteInput = false, readFullDatbase = false;
     		DatabaseWriterForInput databaseWriter = context.getBean(DatabaseWriterForInput.class);
     		
-    		System.out.println("Select the appropriate option - \n1) Console Reader \n2) File Read \n3) Database Read\n4) Console read and DatabaseWrite Input");
+    		System.out.println("Select the appropriate option - \n1) Console Reader \n2) File Read \n3) Database Read\n4) Console read and DatabaseWrite Input\n5) Read all the inputs from database");
     		selector = in.nextInt();
     		
     		
@@ -39,6 +40,10 @@ public class App
 			case 4:
 				reader = context.getBean(ConsoleReader.class);
 				dbWriteInput = true;
+				break;
+			case 5:
+				reader = context.getBean(FullDatabaseReader.class);
+				readFullDatbase = true;
 				break;
 			default:
 				System.out.println("Invalid selection");
@@ -75,12 +80,24 @@ public class App
     		Writer<Vector<Integer>> printerPositiveNums = output -> output.forEach(System.out::println);
     		
     		inputNums = reader.takeInput();
-    		outputNums = (Vector<Integer>) processor.arithmatic(inputNums);
-    		if(selector!=5)
-    			writer.print(outputNums);
+    		
+    		if(readFullDatbase && selector!=5) {
+    			Integer[] tempInput = new Integer[4];
+    			for (Integer i = 0; i<inputNums.length; i=i+4) {
+    				tempInput = Arrays.copyOfRange(inputNums, i, i+4);
+//    				Arrays.stream(tempInput).forEach(System.out::println);
+    				outputNums = (Vector<Integer>) processor.arithmatic(tempInput);
+    				writer.print(outputNums);
+    			}
+    		}
     		else {
+    			outputNums = (Vector<Integer>) processor.arithmatic(inputNums);
+    		}
+    		
+    		if(selector==5 && !outputNums.isEmpty()) {
     			printerPositiveNums.print(outputNums);
     		}
+//    			writer.print(outputNums);    	
     		
     		if(dbWriteInput) {
     			databaseWriter.insert(inputNums);

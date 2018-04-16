@@ -15,7 +15,7 @@ public class MultiplierP implements Processor<Vector<Integer>>{
 	}
 	
 	@Inject
-	public void setAddInterface(Multiplier multiplier) {
+	public MultiplierP(Multiplier multiplier) {
 		this.multiplier = multiplier;
 	}
 }

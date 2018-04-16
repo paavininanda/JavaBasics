@@ -6,25 +6,16 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 import javax.inject.Inject;
+
 import org.springframework.stereotype.Component;
 
 @Component
-public class DatabaseReader implements Reader{
-	
-	private ComplexNumberMapper complexNumberMapper;
+public class FullDatabaseReader implements Reader{
+
+	ComplexNumberMapper complexNumberMapper;
 	
 	@Override
 	public Integer[] takeInput() throws FileNotFoundException {
-		ComplexNumber c = complexNumberMapper.getNums(1);
-		Integer [] input = new Integer[4];
-		input[0] = c.getReal1();
-		input[1] = c.getImg1();
-		input[2] = c.getReal2();
-		input[3] = c.getImg2();
-		return input;
-	}
-	
-	public Integer[] takeFullInput() {
 		ComplexNumber[] c = complexNumberMapper.getAllInputs();
 		ArrayList<Integer> inputList = new ArrayList<Integer>();
 		Stream<ComplexNumber> cStream= Arrays.stream(c);
@@ -40,7 +31,7 @@ public class DatabaseReader implements Reader{
 	}
 	
 	@Inject
-	public DatabaseReader(ComplexNumberMapper mapper) {
+	public FullDatabaseReader(ComplexNumberMapper mapper) {
 		this.complexNumberMapper = mapper;
 	}
 

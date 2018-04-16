@@ -20,7 +20,7 @@ public class MulAdder implements Processor<Vector<Integer>> {
 	}
 	
 	@Inject
-	public void setMulAddInterface(Adder adder, Multiplier multiplier) {
+	public MulAdder(Adder adder, Multiplier multiplier) {
 		this.adder=adder;
 		this.multiplier=multiplier;
 	}

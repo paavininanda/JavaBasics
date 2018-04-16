@@ -8,17 +8,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatabaseWriterForInput{
 
-	private Mapper mapper;
+	private ComplexNumberMapper complexNumberMapper;
 
 	public void insert(Integer inputNums[]) {
 		Integer sNoDefault = 1;
 		ComplexNumber c = new ComplexNumber(sNoDefault,inputNums[0],inputNums[1],inputNums[2],inputNums[3]);
-		mapper.insertToInput(c);
+		complexNumberMapper.insertToInput(c);
 	}
 	
 	@Inject
-	public void setMapper(Mapper mapper) {
-		this.mapper = mapper;
+	public DatabaseWriterForInput(ComplexNumberMapper mapper) {
+		this.complexNumberMapper = mapper;
 	}
 
 }
